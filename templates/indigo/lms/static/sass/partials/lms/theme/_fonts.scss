@@ -1,0 +1,48 @@
+///////// Serif
+@font-face {
+  font-family: 'TT Positive';
+  src:
+    url('#{$static-path}/fonts/TT-Positive-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Positive';
+  src:
+    url('#{$static-path}/fonts/TT-Positive-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'TT Positive';
+  src:
+    url('#{$static-path}/fonts/TT-Positive-DemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Positive';
+  src:
+    url('#{$static-path}/fonts/TT-Positive-DemiBold-Italic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'TT Positive';
+  src:
+    url('#{$static-path}/fonts/TT-Positive-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Positive';
+  src:
+    url('#{$static-path}/fonts/TT-Positive-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}

@@ -1,0 +1,79 @@
+<%page expression_filter="h"/>
+<%!
+  import json
+  from django.utils.translation import gettext as _
+  from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_json
+%>
+<%inherit file="../main.html" />
+<%
+  course_discovery_enabled = settings.FEATURES.get('ENABLE_COURSE_DISCOVERY')
+%>
+
+<%namespace name='static' file='../static_content.html'/>
+<%block name="js_extra">
+  <script type="text/javascript" src="${static.url('common/js/vendor/bootstrap.bundle.js')}"></script>
+</%block>
+% if course_discovery_enabled:
+<%block name="header_extras">
+  % for template_name in ["course_card", "filter_bar", "filter", "facet", "facet_option"]:
+  <script type="text/template" id="${template_name}-tpl">
+      <%static:include path="discovery/${template_name}.underscore" />
+  </script>
+  % endfor
+  <%static:require_module module_name="js/discovery/discovery_factory" class_name="DiscoveryFactory">
+    DiscoveryFactory(
+      ${course_discovery_meanings | n, dump_js_escaped_json},
+      getParameterByName('search_query'),
+      "${user_language | n, js_escaped_string}",
+      "${user_timezone | n, js_escaped_string}",
+      ${set_default_filter | n, dump_js_escaped_json}
+    );
+  </%static:require_module>
+</%block>
+% endif
+
+<%block name="pagetitle">Все курсы</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="find-courses">
+      <section class="courses-container">
+        <!-- NEW IN INDIGO Heading was added. -->
+        <div class="course-heading-area">
+          <h2>EdTech Academy</h2>
+        </div>
+        <!-- NEW IN INDIGO Modified search bar and filters. -->
+        % if course_discovery_enabled:
+          <div class="saerch-bar-discover">
+            <div class="discover-search">
+            <div id="discovery-form" role="search" aria-label="course" class="wrapper-search-context">
+              <form class="wrapper-search-input">
+                <label for="discovery-input" class="sr">${_('Поиск курса')}</label>
+                <div class="button-holder">
+                  <button type="submit" class="button postfix discovery-submit" title="${_('Поиск')}">Поиск</button>
+                </div>
+                <div class="input-holder">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4ZM2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8C14 9.29583 13.5892 10.4957 12.8907 11.4765L17.7071 16.2929C18.0976 16.6834 18.0976 17.3166 17.7071 17.7071C17.3166 18.0976 16.6834 18.0976 16.2929 17.7071L11.4765 12.8907C10.4957 13.5892 9.29583 14 8 14C4.68629 14 2 11.3137 2 8Z" fill="#9CA3AF"/>
+                    </svg>
+                  <input id="discovery-input" class="discovery-input" placeholder="Поиск курса" type="text"/>
+                </div>
+              </form>
+            </div>
+            <div id="filter-bar" class="filters hide-phone is-collapsed">>
+            </div>
+          </div>
+        </div>
+      % endif
+
+        <div class="course-holder courses${'' if course_discovery_enabled else ' no-course-discovery'}" role="region" aria-label="${_('Список курсов')}">
+          <ul class="courses-listing courses-list">
+            %for course in courses:
+            <li class="courses-listing-item">
+              <%include file="../course.html" args="course=course" />
+            </li>
+            %endfor
+          </ul>
+        </div>
+      </section>
+    </section>
+</main>

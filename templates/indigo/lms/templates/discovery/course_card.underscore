@@ -1,0 +1,23 @@
+<article class="course" role="region" aria-label="<%- content.display_name %>">
+        <header class="course-image">
+            <div class="cover-image">
+                <!-- NEW IN INDIGO: Add fallback image in case of no course-image using onerror -->
+                <img src="<%- image_url %>" onerror="this.src='/theming/asset/images/no_course_image.png';" alt="<%- content.display_name %> <%- content.number %>" />
+            </div>
+        </header>
+        <section class="course-info" aria-hidden="true">
+            <h2 class="course-name">
+                <span class="course-code"><%- content.number %></span>
+                <span class="course-title"><%- content.display_name %></span>
+                <span class="course-organization"><%- org %></span>
+            </h2>
+            <a href="/courses/<%- course %>/about" class="learn-more"><%- gettext("Открыть курс") %></a>
+        </section>
+        <div class="sr">
+            <ul>
+                <li><%- org %></li>
+                <li><%- content.number %></li>
+                <li><%- gettext("Начало") %><time itemprop="startDate" datetime="<%- start %>"><%- start %></time></li>
+            </ul>
+        </div>
+</article>
