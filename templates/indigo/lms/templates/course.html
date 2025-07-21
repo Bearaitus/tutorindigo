@@ -18,8 +18,8 @@ from django.urls import reverse
         <span class="course-title">${course.display_name_with_default}</span>
         <span class="course-organization">${course.display_org_with_default}</span>
       </h2>
-      <!-- NEW IN INDIGO Подробнее button is displayed under the course image instead of the hover functionality. -->
-      <a  href="${reverse('about_course', args=[str(course.id)])}" class="learn-more" aria-hidden="true">Подробнее</a>
+      <!-- NEW IN INDIGO ABOUT button is displayed under the course image instead of the hover functionality. -->
+      <a  href="${reverse('about_course', args=[str(course.id)])}" class="learn-more" aria-hidden="true">About</a>
       <%
       if course.start is not None:
           course_date_string = course.start.strftime('%Y-%m-%dT%H:%M:%S%z')
@@ -32,9 +32,9 @@ from django.urls import reverse
         <li>${course.display_org_with_default}</li>
         <li>${course.display_number_with_default}</li>
         % if course.advertised_start is not None:
-            <li>${_("Начало")}: <time itemprop="startDate">${course.advertised_start}</time></li>
+            <li>${_("Home")}: <time itemprop="startDate">${course.advertised_start}</time></li>
         % else:
-            <li>${_("Начало")}: <time class="localized_datetime" itemprop="startDate" data-format="shortDate" data-datetime="${course_date_string}" data-language="${LANGUAGE_CODE}"></time></li>
+            <li>${_("Home")}: <time class="localized_datetime" itemprop="startDate" data-format="shortDate" data-datetime="${course_date_string}" data-language="${LANGUAGE_CODE}"></time></li>
         % endif
       </ul>
     </div>

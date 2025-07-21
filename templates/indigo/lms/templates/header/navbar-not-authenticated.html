@@ -27,7 +27,7 @@ from django.utils.translation import gettext as _
     </div>
     % if courses_are_browsable:
       <div class="mobile-nav-item hidden-mobile nav-item">
-        <a href="${marketing_link('COURSES')}">${_("Курсы")}</a>
+        <a href="${marketing_link('COURSES')}">Courses</a>
       </div>
     % endif
     <div class="mobile-nav-item hidden-mobile nav-item">
@@ -37,7 +37,7 @@ from django.utils.translation import gettext as _
   % if allows_login:
     % if can_discover_courses:
       <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
-        <a href="/courses"><b>Все курсы</b></a>
+        <a href="/courses"><b>All courses</b></a>
       </div>
     %endif
   % endif
@@ -46,7 +46,7 @@ from django.utils.translation import gettext as _
     <div class="btn-holder">
       % if allows_login:
         <div class="mobile-nav-item hidden-mobile nav-item">
-            <a class="sign-in-btn btn" href="/login${login_query()}">Вход</a>
+            <a class="sign-in-btn btn" href="/login${login_query()}">Login</a>
         </div>
       % endif
     </div>
