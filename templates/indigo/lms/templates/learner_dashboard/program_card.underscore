@@ -13,7 +13,7 @@
         <div class="number-status">
             <div class="number-circle completed"><%- progress.completed %></div>
             <span class="sr-only">
-                <%- ngettext('Course', 'Course', progress.completed) %>
+                <%- ngettext('Course', 'Курсы', progress.completed) %>
             </span>
             <%- gettext('Completed') %>
         </div>
@@ -21,7 +21,7 @@
         <div class="number-status">
             <div class="number-circle enrolled"><%- progress.in_progress %></div>
             <span class="sr-only">
-                <%- ngettext('Course', 'Course', progress.in_progress) %>
+                <%- ngettext('Course', 'Курсы', progress.in_progress) %>
             </span>
             <%- gettext('In Progress') %>
         </div>
@@ -29,7 +29,7 @@
         <div class="number-status">
             <div class="number-circle not-enrolled"><%- progress.not_started %></div>
             <span class="sr-only">
-                <%- ngettext('Course', 'Course', progress.not_started) %>
+                <%- ngettext('Course', 'Курсы', progress.not_started) %>
             </span>
             <%- gettext('Remaining') %>
         </div>
