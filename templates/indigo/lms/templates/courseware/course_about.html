@@ -139,7 +139,6 @@ from openedx.core.lib.courses import course_image_url
         <h2>Course Information</h2>
         <%block name="course_about_important_dates">
         <ol class="important-dates">
-          % endif
             ## We plan to ditch end_date (which is not stored in course metadata),
             ## but for backwards compatibility, show about/end_date blob if it exists.
             % if course.end:
